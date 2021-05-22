@@ -69,6 +69,51 @@ class GettingABookTest {
 
     }
 
+    @Test
+    void givenEditBookRequest_whenClickOnEdit_shouldBeAbleToEditBookRequest() {
+        // arrange
+        driver.findElement(By.xpath("//a[@href='/GetBook']")).click();
+
+        // act
+        driver.findElement(By.xpath("//a[@href='/GetBook/Edit/113']")).click();
+        Select s = new Select(driver.findElement(By.id("UserId")));
+        s.selectByValue("60");
+        Select s1 = new Select(driver.findElement(By.id("BookId")));
+        s.selectByValue("60");
+        driver.findElement(By.xpath("//input[@type='submit']")).click();
+
+        // assert
+
+    }
+
+    @Test
+    void givenDetailsRecord_whenClickOnDetails_shouldBeAbleToSeeRequestsDetails() {
+        // arrange
+        driver.findElement(By.xpath("//a[@href='/GetBook']")).click();
+
+        // act
+        driver.findElement(By.xpath("//a[@href='/GetBook/Details/113']")).click();
+
+        // assert
+        boolean displayed = driver.findElement(By.xpath("//h2[contains(text(), 'Details')]")).isDisplayed();
+        assertThat(displayed).isTrue();
+    }
+
+
+    @Test
+    void givenDeletingRecord_whenClickOnDelete_shouldAskForConfirmation() {
+        // arrange
+        driver.findElement(By.xpath("//a[@href='/GetBook']")).click();
+
+        // act
+        driver.findElement(By.xpath("//a[@href='/GetBook/Delete/113']")).click();
+        driver.findElement(By.xpath("//input[@value='Delete']")).click();
+
+        // assert
+        // boolean displayed = driver.findElement(By.xpath("TODO").isDisplayed();
+        // assertThat(displayed).isTrue();
+    }
+
     public boolean isElementExists(By by) {
         boolean isExists = true;
         try {

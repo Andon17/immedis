@@ -83,8 +83,8 @@ class UsersModuleTest {
         driver.findElement(By.xpath("//input[@type='submit']")).click();
 
         // assert
-        boolean displayed = driver.findElement(By.xpath("//*[contains(text(), 'k.repeat(101)')]")).isDisplayed();
-        assertThat(displayed).isFalse();
+        boolean displayed = driver.findElement(By.xpath("//h1[@class='text-danger']")).isDisplayed();
+        assertThat(displayed).isTrue();
     }
 
     @Test

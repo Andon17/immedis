@@ -124,7 +124,7 @@ class BooksModuleTest {
 
         // assert
         boolean displayed = driver.findElement(By.xpath("//h1[@class='text-danger']")).isDisplayed();
-        assertThat(displayed).isFalse();
+        assertThat(displayed).isTrue();
     }
 
     @Test
